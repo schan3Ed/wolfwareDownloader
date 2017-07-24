@@ -1,4 +1,6 @@
 var txt =  ""
+var conflict = 'uniquify';
+
 
 var checkSite = function(downloadItem) {
   var site = downloadItem.url;
