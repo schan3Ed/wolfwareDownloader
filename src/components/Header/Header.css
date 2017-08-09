@@ -1,0 +1,20 @@
+.header-logo {
+  height: 50px;
+  position: relative;
+  display: block;
+  float: left;
+}
+
+.header {
+  display: flex; 
+  display: -webkit-flex; 
+  align-items: center; 
+  background-color: #c00;
+  height: 50px;
+  color: white;
+}
+
+.header-text {
+  margin: auto;
+  font-size: 1.7em;
+}
