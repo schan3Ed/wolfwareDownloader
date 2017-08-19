@@ -18,7 +18,7 @@ let initStorage = function() {
   console.log('clearing local storage');
   chrome.storage.local.clear(function() {
     console.log('cleared');
-    chrome.storage.local.get('config', function (result) {
+    chrome.storage.local.get('config', function(result) {
       // alert(result);
       console.log('result' + JSON.stringify(result));
       if (isEmpty(result)) {
@@ -35,44 +35,60 @@ let initStorage = function() {
   })
 }
 
-let getSettings = function(){
+let getSettings = function() {
   console.log('called get settings')
-  chrome.storage.local.get('config', function (result) {
+  chrome.storage.local.get('config', function(result) {
     return result;
   });
 }
 
-let checkSite = function (downloadItem) {
-  let site = downloadItem.url;
-  if (site.indexOf('wolfware') != -1) {
-    console.log('found wolfware');
+
+
+initStorage();
+
+let startIndex;
+let endIndex;
+//list of sites that needed to be check
+let checkSites = function(downloadItem) {
+  let url = downloadItem.url;
+  
+  return checkWolfware(url);
+}
+//checking for wolfware
+let checkWolfware = function(url) {
+  if (url.indexOf('wolfware') != -1) {
+    console.log('Downloading from a wolfware site');
+    //setting up for wolfware environment
+    startIndex = 0;
+    endIndex = 6;
     return true;
   }
   return false;
 };
 
-initStorage();
+
 //Where the determining file name starts  
-chrome.downloads.onDeterminingFilename.addListener(function (downloadItem, suggest) {
+chrome.downloads.onDeterminingFilename.addListener(function(downloadItem, suggest) {
   if (checkSite(downloadItem)) {
-    chrome.tabs.query({ active: true, lastFocusedWindow: true }, function (tabs) {
+    chrome.tabs.query({
+      active: true,
+      lastFocusedWindow: true
+    }, function(tabs) {
       let tabTitle = tabs[0].title;
-    // This right here get the right title in any page v0.1.3
-        chrome.tabs.executeScript(tabs[0].id, {
-        "code": "document.getElementsByTagName(\"h1\")[1]"}, function (result) {
+      // This right here get the right title in any page v0.1.3
+      // Should extract this as a refactor if we have more websites. But for now, its okay
+      chrome.tabs.executeScript(tabs[0].id, {
+        "code": "document.getElementsByTagName(\"h1\")[1]"
+      }, function(result) {
+        let pathName = "";
+        pathName += result.substring(startIndex, endIndex);
+        // changing the path here
+        suggest({
+          filename: pathName + '/' + downloadItem.filename,
+          //conflictAction: storageCache.config
+          //for debugging purposes
+          conflictAction: 'overwrite'
         });
-  //ends here still need to extract
-      let txt = "";
-      if (tabTitle.indexOf('Course:') !== -1) {
-        txt = tabTitle.substring(8, 14);
-        txt += tabTitle.charAt(14) == ' ' ? "" : tabTitle.charAt(14);
-      } else {
-        txt = tabTitle.substring(0, 6);
-        txt += tabTitle.charAt(6) == ' ' ? "" : tabTitle.charAt(6);
-      }
-      suggest({
-        filename: txt + '/' + downloadItem.filename,
-        conflictAction: storageCache.config
       });
     });
   } else
