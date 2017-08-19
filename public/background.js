@@ -52,11 +52,16 @@ let checkSite = function (downloadItem) {
 };
 
 initStorage();
-
+//Where the determining file name starts  
 chrome.downloads.onDeterminingFilename.addListener(function (downloadItem, suggest) {
   if (checkSite(downloadItem)) {
     chrome.tabs.query({ active: true, lastFocusedWindow: true }, function (tabs) {
       let tabTitle = tabs[0].title;
+    // This right here get the right title in any page v0.1.3
+        chrome.tabs.executeScript(tabs[0].id, {
+        "code": "document.getElementsByTagName(\"h1\")[1]"}, function (result) {
+        });
+  //ends here still need to extract
       let txt = "";
       if (tabTitle.indexOf('Course:') !== -1) {
         txt = tabTitle.substring(8, 14);

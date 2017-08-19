@@ -8,7 +8,7 @@
   },
   "permissions": [
     "activeTab",
-    "downloads",
+    "downloads", "https://moodle-courses1718.wolfware.ncsu.edu/*",
     "tabs",
     "https://ajax.googleapis.com/",
     "storage"
