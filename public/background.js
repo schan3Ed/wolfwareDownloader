@@ -46,12 +46,11 @@ let getSettings = function() {
 
 initStorage();
 
-let startIndex;
-let endIndex;
+let startIndex = 0;
+let endIndex = 0;
 //list of sites that needed to be check
 let checkSites = function(downloadItem) {
   let url = downloadItem.url;
-  
   return checkWolfware(url);
 }
 //checking for wolfware
@@ -69,7 +68,7 @@ let checkWolfware = function(url) {
 
 //Where the determining file name starts  
 chrome.downloads.onDeterminingFilename.addListener(function(downloadItem, suggest) {
-  if (checkSite(downloadItem)) {
+  if (checkSites(downloadItem)) {
     chrome.tabs.query({
       active: true,
       lastFocusedWindow: true
@@ -77,16 +76,16 @@ chrome.downloads.onDeterminingFilename.addListener(function(downloadItem, sugges
       let tabTitle = tabs[0].title;
       // This right here get the right title in any page v0.1.3
       // Should extract this as a refactor if we have more websites. But for now, its okay
-      chrome.tabs.executeScript(tabs[0].id, {
-        "code": "document.getElementsByTagName(\"h1\")[1]"
+      chrome.tabs.executeScript({
+          code: 'document.getElementsByClassName("page-header-headings")[0].innerText'
       }, function(result) {
         let pathName = "";
-        pathName += result.substring(startIndex, endIndex);
-        // changing the path here
+        console.log(result[0])
+   //     result = result.textContent
+        pathName += result[0].substring(startIndex, endIndex);
         suggest({
           filename: pathName + '/' + downloadItem.filename,
           //conflictAction: storageCache.config
-          //for debugging purposes
           conflictAction: 'overwrite'
         });
       });
