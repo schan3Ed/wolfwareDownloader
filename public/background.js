@@ -3,45 +3,6 @@ chrome.browserAction.setIcon({
   path: "icon.png"
 });
 
-// File conflict action
-// .prompt
-// .overwrite
-// .default
-let storageCache = {};
-
-function isEmpty(obj) {
-  return Object.keys(obj).length === 0;
-}
-
-let initStorage = function() {
-  // alert('testing');
-  console.log('clearing local storage');
-  chrome.storage.local.clear(function() {
-    console.log('cleared');
-    chrome.storage.local.get('config', function (result) {
-      // alert(result);
-      console.log('result' + JSON.stringify(result));
-      if (isEmpty(result)) {
-        console.log('setting config to prompt');
-        let init = {
-          config: 'prompt'
-        };
-        chrome.storage.local.set(init);
-        storageCache = init;
-      } else {
-        console.log('storage already initialized');
-      }
-    })
-  })
-}
-
-let getSettings = function(){
-  console.log('called get settings')
-  chrome.storage.local.get('config', function (result) {
-    return result;
-  });
-}
-
 let checkSite = function (downloadItem) {
   let site = downloadItem.url;
   if (site.indexOf('wolfware') != -1) {
@@ -50,8 +11,6 @@ let checkSite = function (downloadItem) {
   }
   return false;
 };
-
-initStorage();
 
 chrome.downloads.onDeterminingFilename.addListener(function (downloadItem, suggest) {
   if (checkSite(downloadItem)) {

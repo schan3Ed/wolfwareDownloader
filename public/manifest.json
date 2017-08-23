@@ -7,11 +7,10 @@
     "default_popup": "index.html"
   },
   "permissions": [
+    "storage",
     "activeTab",
     "downloads",
-    "tabs",
-    "https://ajax.googleapis.com/",
-    "storage"
+    "tabs"
   ],
   "background": {
     "scripts": ["background.js"],
