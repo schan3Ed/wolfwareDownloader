@@ -29,8 +29,11 @@ function getFromStorageSync(key) {
   })
 }
 
-let startIndex;
-let endIndex;
+
+let startIndex = 0;
+let endIndex = 0;
+
+
 //Where the determining file name starts  
 chrome.downloads.onDeterminingFilename.addListener(function(downloadItem, suggest) {
   if (checkSites(downloadItem)) {
@@ -38,6 +41,7 @@ chrome.downloads.onDeterminingFilename.addListener(function(downloadItem, sugges
       active: true,
       lastFocusedWindow: true
     }, function(tabs) {
+ //     let tabTitle = tabs[0].title;
       // This right here get the right title in any page v0.1.3
       // Should extract this as a refactor if we have more websites. But for now, its okay
       chrome.tabs.executeScript({
@@ -45,20 +49,22 @@ chrome.downloads.onDeterminingFilename.addListener(function(downloadItem, sugges
       }, function(result) {
         let pathName = "";
         console.log(result[0])
+   //     result = result.textContent
         pathName += result[0].substring(startIndex, endIndex);
         getFromStorageSync('config').then((result) => {
+          console.log(result.config)
           suggest({
             filename: pathName + '/' + downloadItem.filename,
             conflictAction: result.config
           });
         })
-      })
+      });
     });
-    return true;
-  } else {
+  } else
     suggest({
       filename: downloadItem.filename,
       conflictAction: 'uniquify'
     });
-  }
+
+  return true;
 });
