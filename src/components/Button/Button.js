@@ -11,7 +11,8 @@ export default class Button extends Component {
   }
 
   handleChange(event) {
-    updateConfig(event.target.id);
+    // TODO: Schema refactor
+    updateConfig(event.target.id.toLowerCase());
   }
 
   render() {

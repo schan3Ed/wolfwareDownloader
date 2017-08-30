@@ -9,8 +9,10 @@
   "permissions": [
     "storage",
     "activeTab",
-    "downloads",
-    "tabs"
+    "downloads", "https://moodle-courses1718.wolfware.ncsu.edu/*",
+    "tabs",
+    "https://ajax.googleapis.com/",
+    "storage"
   ],
   "background": {
     "scripts": ["background.js"],
