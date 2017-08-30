@@ -5,7 +5,7 @@ chrome.browserAction.setIcon({
 });
 
 //list of sites that needed to be check
-let checkSite = function(downloadItem) {
+let checkSites = function(downloadItem) {
   let url = downloadItem.url;
   return checkWolfware(url);
 }
@@ -32,24 +32,26 @@ function getFromStorageSync(key) {
 let startIndex;
 let endIndex;
 //Where the determining file name starts  
-chrome.downloads.onDeterminingFilename.addListener(function (downloadItem, suggest) {
-  if (checkSite(downloadItem)) {
-    chrome.tabs.query({ active: true, lastFocusedWindow: true }, function (tabs) {
-      let tt = tabs[0].title;
-      if (tt.indexOf('Course:') !== -1) {
-        txt = tt.substring(8, 14);
-        txt += tt.charAt(14) == ' ' ? "" : tt.charAt(14);
-      } else {
-        txt = tt.substring(0, 6);
-        txt += tt.charAt(6) == ' ' ? "" : tt.charAt(6);
-      }
-      getFromStorageSync('config').then( (results) => {
-        console.log(results.config);
-        console.log(results);
-        suggest({
-          filename: txt + '/' + downloadItem.filename,
-          conflictAction: results.config
-        });
+chrome.downloads.onDeterminingFilename.addListener(function(downloadItem, suggest) {
+  if (checkSites(downloadItem)) {
+    chrome.tabs.query({
+      active: true,
+      lastFocusedWindow: true
+    }, function(tabs) {
+      // This right here get the right title in any page v0.1.3
+      // Should extract this as a refactor if we have more websites. But for now, its okay
+      chrome.tabs.executeScript({
+          code: 'document.getElementsByClassName("page-header-headings")[0].innerText'
+      }, function(result) {
+        let pathName = "";
+        console.log(result[0])
+        pathName += result[0].substring(startIndex, endIndex);
+        getFromStorageSync('config').then((result) => {
+          suggest({
+            filename: pathName + '/' + downloadItem.filename,
+            conflictAction: result.config
+          });
+        })
       })
     });
     return true;
