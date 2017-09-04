@@ -1,16 +1,24 @@
 {
   "manifest_version": 2,
-  "name": "EdsDownload",
+  "name": "Wolfware Downloader",
   "description": "This Extension helps user automatically organise their download item from Wolfware",
   "version": "0.1",
   "browser_action": {
     "default_popup": "index.html"
   },
   "permissions": [
-    "downloads"
+    "storage",
+    "activeTab",
+    "downloads", "*://*/*",
+    "tabs",
+    "https://ajax.googleapis.com/",
+    "storage"
   ],
   "background": {
-    "scripts": ["download.js"],
+    "scripts": ["background.js"],
     "persistent": false
-  }
+  },
+  "icons": {
+    "16": "icon.png"
+  }    
 }

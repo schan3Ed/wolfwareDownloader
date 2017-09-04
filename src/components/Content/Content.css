@@ -1,0 +1,9 @@
+.Content {
+  position: relative;
+}
+
+h2 {
+  font-size: 1.3em;
+  padding: 10px;
+  margin-bottom: -13px;
+}

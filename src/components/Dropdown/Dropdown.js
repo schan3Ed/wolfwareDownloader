@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Toggle from '../Toggle/Toggle'
 import './Dropdown.css';
 import 'font-awesome/css/font-awesome.min.css';
 
@@ -10,10 +11,12 @@ class Dropdown extends Component {
           <i className="fa fa-cog icon" aria-hidden="true"></i>
           Settings
         </button>
-        <div className="dropdown-content">
-          <a href="#">Link 1</a>
-          <a href="#">Link 2</a>
-          <a href="#">Link 3</a>
+        <div className="dropdown-content btn-group">
+          <form action="">
+            <input type="radio" name="config" value="male"/> Male<br/>
+            <input type="radio" name="config" value="female"/> Female<br/>
+            <input type="radio" name="config" value="other"/> Other 
+          </form>
         </div>
       </div>
     );
