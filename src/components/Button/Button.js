@@ -24,7 +24,7 @@ export default class Button extends Component {
           name={this.props.name} 
           onChange={this.handleChange}
           defaultChecked={this.props.defaultChecked}/>
-        <label htmlFor={this.props.id} title={this.props.title}>{this.props.id}</label>
+        <label htmlFor={this.props.id} title={this.props.title}>{this.props.title}</label>
         <div className="check"></div>
       </div>
     );

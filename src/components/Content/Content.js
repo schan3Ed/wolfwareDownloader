@@ -5,7 +5,7 @@ import './Content.css'
 
 export default class Content extends Component {
 
-  buttonConfigs = [{id:'Overwrite', title: 'a'}, {id:'Prompt', title: 'b'}, {id:'Default', title: 'c'}];
+  buttonConfigs = [{id:'Overwrite', title: 'Overwrite'}, {id:'Prompt', title: 'Prompt'}, {id:'Uniquify', title: 'Default'}];
 
   render() {
     // console.log(storageCache);
