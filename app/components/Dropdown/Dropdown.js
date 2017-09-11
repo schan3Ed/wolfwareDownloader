@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Toggle from '../Toggle/Toggle'
 import './Dropdown.css';
 import 'font-awesome/css/font-awesome.min.css';
 

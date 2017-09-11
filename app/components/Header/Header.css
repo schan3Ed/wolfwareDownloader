@@ -1,4 +1,4 @@
-.header-logo {
+.logo {
   height: 50px;
   position: relative;
   display: block;
@@ -14,7 +14,7 @@
   color: white;
 }
 
-.header-text {
+.text {
   margin: auto;
   font-size: 1.7em;
 }

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 // import Dropdown from '../Dropdown/Dropdown';
 // import Toggle from '../Toggle/Toggle';
-import { updateConfig } from '../../stores/UserConfigStore'
-import './Button.css'
+import { updateConfig } from '../../store/UserConfigStore'
+import style from './Button.css'
 
 export default class Button extends Component {
   constructor(props) {
@@ -17,7 +17,7 @@ export default class Button extends Component {
 
   render() {
     return (
-      <div className='Button'>
+      <div className={style.Button}>
         <input 
           type="radio" 
           id={this.props.id} 
@@ -25,7 +25,7 @@ export default class Button extends Component {
           onChange={this.handleChange}
           defaultChecked={this.props.defaultChecked}/>
         <label htmlFor={this.props.id} title={this.props.title}>{this.props.id}</label>
-        <div className="check"></div>
+        <div className={style.check}></div>
       </div>
     );
   }

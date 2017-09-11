@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import Header from './components/Header/Header';
-import Content from './components/Content/Content';
-import Footer from './components/Footer/Footer';
-import { initCache } from './stores/UserConfigStore';
-import './index.css';
+import Header from '../components/Header/Header';
+import Content from '../components/Content/Content';
+import Footer from '../components/Footer/Footer';
+import { initCache } from '../store/UserConfigStore';
+import './App.css';
 
-class App extends Component {
-  
+export default class App extends Component {
   state = { cache: null };
 
   async componentWillMount() {
@@ -32,5 +31,3 @@ class App extends Component {
     }
   }
 }
-
-export default App;
