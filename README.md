@@ -1,5 +1,8 @@
 # Wolfware Downloader
-A tailor-made Wolfware organizing chrome extension
+A tailor-made Wolfware organizing chrome extension for North Carolina State University Studnents
+
+### Author
+Edward Chan, Evan Li
 
 ## Purpose
 To help NC state students to organize their downloaded files from wolfware in a better manner. At the event of downloading an item from wolfware, the extension will automatically redirect the desitnation download folder into "/Wolfware/ <Class Code> /".
