@@ -1,9 +1,9 @@
-#Wolfware Downloader
+# Wolfware Downloader
 
-##Purpose
-To help NC state students to organize their downloaded files from wolfware in a better manner. At the event of downloading an item from wolfware, the extension will automatically redirect the desitnation download folder into "/Wolfware/<Class Code>/".
+## Purpose
+To help NC state students to organize their downloaded files from wolfware in a better manner. At the event of downloading an item from wolfware, the extension will automatically redirect the desitnation download folder into "/Wolfware/ <Class Code> /".
 
-##User Settings
+## User Settings
 There are 3 user specified settings when conflict actions occur. An conflict action is when a file with the same name appears in the same destinated download folder. 
 | Conflict action | Description |
 |-----------------|-------------|
@@ -12,13 +12,13 @@ There are 3 user specified settings when conflict actions occur. An conflict act
 |Overwrite        |overwrite the local file with the downloaded one to prevent many copies| 
 
 
-##Instruction to build
+## Build Instruction
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 You can find the most recent version of this guide [here](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
 
-## Available Scripts
+### Available Scripts
 
 In the project directory, you can run:
 
