@@ -5,6 +5,7 @@ To help NC state students to organize their downloaded files from wolfware in a 
 
 ## User Settings
 There are 3 user specified settings when conflict actions occur. An conflict action is when a file with the same name appears in the same destinated download folder. 
+
 | Conflict action | Description |
 |-----------------|-------------|
 |Default          | which is uniquify, which takes the file name and attach, (1), (2) ... to the end of the filename and create a copy|
