@@ -3,6 +3,14 @@
 ## Purpose
 To help NC state students to organize their downloaded files from wolfware in a better manner. At the event of downloading an item from wolfware, the extension will automatically redirect the desitnation download folder into "/Wolfware/ <Class Code> /".
 
+## Screenshot
+![alt text][screenshot]
+
+[screenshot]: http://imgur.com/XZ3dy3Zl.png
+
+## Install Instruction
+See https://chrome.google.com/webstore/detail/wolfware-downloader/nkkhgimgcabahkdceeaofohafkifjfdp?hl=en
+
 ## User Settings
 There are 3 user specified settings when conflict actions occur. An conflict action is when a file with the same name appears in the same destinated download folder. 
 
