@@ -1,9 +1,9 @@
 {
   "manifest_version": 2,
-  "name": "Wolfware Downloader",
-  "description": "This Extension helps user automatically organise their download item from Wolfware",
-  "version": "1.0.1",
-  "version_name": "1.0 beta",
+  "name": "WolfFile",
+  "description": "This chrome extension helps user to better organize files from wolfware",
+  "version": "1.0.0",
+  "version_name": "beta",
   "browser_action": {
     "default_popup": "index.html"
   },
